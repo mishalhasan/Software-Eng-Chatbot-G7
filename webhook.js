@@ -78,18 +78,31 @@ app.get('/webhook', (req, res) => {
   function handleMessage(sender_psid, received_message) {
 
     let response;
-  
+
+    request({
+      "uri": "http://localhost:8090/givenMessage",
+      "method": "POST",
+      "json": received_message
+    }, (err, res, body) => {
+      if (!err) {
+        console.log('message sent to python!')
+        console.log(typeof body)
+        var string = JSON.stringify(body);
+        var objectValue = JSON.parse(string);
+        response = {"text" : body}; //parse the json body to string
+        callSendAPI(sender_psid, response);   // Sends the response message
+      } else {
+        console.error("Unable to send message to python:" + err);
+      }
+    });
     // Check if the message contains text
-    if (received_message.text) {    
+    /*if (received_message.text) {    
   
       // Create the payload for a basic text message
       response = {
-        "text": `You sent the message: "${received_message.text}". I am now your bitch Tyrel! Do what you want to me`
+        "text": `You sent the message: "${received_message.text}".`
       }
-    }  
-    
-    // Sends the response message
-    callSendAPI(sender_psid, response);    
+    }  */  
   }
 
   function callSendAPI(sender_psid, response) {
