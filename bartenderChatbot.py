@@ -1,8 +1,8 @@
 from flask import Flask
 from flask import request
 
-def createMessage(input): #change this method and anything to create the message wanted to facebook
-    return 'JSON posted'
+def createMessage(input): #change this method and anything to create the message wanted to facebook. input paramter is message coming in
+    return 'JSON posted'  #this will return the wanted message back out to messenger
 
 
 
