@@ -1,6 +1,7 @@
 from flask import Flask
 from flask import request
 from textblob import TextBlob
+import random
 import json
 
 def createMessage(input): #change this method and anything to create the message wanted to facebook. input paramter is message coming in
@@ -12,7 +13,7 @@ def createMessage(input): #change this method and anything to create the message
     #data = data + " I am echoing what you say!"
     #data = data + " I am doing some processes on the input rn! This works so well"
 
-    return data  #this will return the wanted message back out to messenger
+    return str(data)  #this will return the wanted message back out to messenger
 
 
 
