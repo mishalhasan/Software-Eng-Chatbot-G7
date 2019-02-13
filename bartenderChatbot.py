@@ -21,14 +21,14 @@ GREETING_RESPONSES = ["What can I get for ya?", "You again?"]
 
 
 def respond(input_msg):
-    if check_for_greeting(input):
+    if check_for_greeting(input_msg):
         return random.choice(GREETING_RESPONSES)
     else:
         return input_msg
 
 
 def check_for_greeting(sentence):
-    for word in sentence.words:
+    for word in sentence:
         if word.lower() in GREETING_KEYWORDS:
             return True
     return False
