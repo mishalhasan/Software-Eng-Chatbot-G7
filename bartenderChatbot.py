@@ -28,7 +28,7 @@ def createMessage(input): #change this method and anything to create the message
 
 def how_many_messages(senderId):
     if senderId not in chat_log:
-        log = {'times_contacted': 1, 'context': 'null', 'drinks_served': 0}
+        log = {'times_contacted': 1, 'context': None, 'drinks_served': 0}
         chat_log[senderId] = log
         return 1
     else:
@@ -61,13 +61,24 @@ def respond(input_msg, senderId):
         chat_log[senderId]['drinks_served'] = num_drinks + 1
         if num_drinks <= 1:
             return "One {0} coming right up!".format(drink)
-        if num_drinks == 2:
+        elif num_drinks == 2:
             return "{0} for you, enjoy.".format(drink)
         else:
             return "Here is your {0}! Wow you've already had {1} drinks!".format(drink, num_drinks)
     if noun:
         #If we have a noun but no drink, we don't know what they want, so we answer with a question
-        return "Need a {0}?".format(noun)
+        resp = []
+        resp.append("Need")
+        if pronoun:
+            if starts_with_vowel(noun):
+                pronoun = "an"
+            else:
+                pronoun = "a"
+            resp.append(pronoun)
+            if adjective:
+                resp.append(adjective)
+        resp.append(noun + "?")
+        return " ".join(resp) 
     else:
         return random.choice(HEDGE_RESPONSES)
 
@@ -138,6 +149,10 @@ def find_adjective(sent):
             adj = w
             break
     return adj
+
+
+def starts_with_vowel(word):
+    return True if word[0] in 'aeiou' else False
 
 
 #all code above this created API
