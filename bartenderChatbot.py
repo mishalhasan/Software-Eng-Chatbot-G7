@@ -34,11 +34,14 @@ chat_log = {}
 
 
 def respond(input_msg, senderId):
+    if input_msg.lower() == 'clear':
+        chat_log[senderId]['times_contacted'] = 0
+        return "Session cleared"
     times_con = how_many_messages(senderId)
     if check_for_greeting(input_msg) and times_con == 1:
         return random.choice(GREETING_RESPONSES)
     if times_con > 3:
-        return "You are too drunk I am unable to serve you any more drinks"
+        return "You are too drunk I am unable to serve you any more drinks. You can type 'clear' to tell me that you're sober again"
     else:
         return input_msg
 
