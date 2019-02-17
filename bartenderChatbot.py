@@ -40,6 +40,7 @@ def how_many_messages(senderId):
 def respond(input_msg, senderId):
     if input_msg.lower() == 'clear':
         chat_log[senderId]['times_contacted'] = 0
+        chat_log[senderId]['drinks_served'] = 0
         return "Session cleared"
     times_con = how_many_messages(senderId)
     if check_for_greeting(input_msg) and times_con == 1:
