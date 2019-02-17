@@ -54,9 +54,9 @@ def respond(input_msg, senderId):
         drink = search_for_drink(input_msg)
     if len(input_msg.words) == 1:
         drink = input_msg
-    print(drink)
     if drink in DRINKS:
-        print ('in the loop')
+        if num_drinks > 3:
+            return "You are too drunk I am unable to serve you any more drinks. You can type 'clear' to tell me that you're sober again"
         #increment drink counter
         chat_log[senderId]['drinks_served'] = num_drinks + 1
         if num_drinks <= 1:
