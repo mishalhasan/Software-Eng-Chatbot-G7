@@ -79,6 +79,7 @@ app.get('/webhook', (req, res) => {
 
     let response;
 
+    received_message.sid = sender_psid;
     request({
       "uri": "http://localhost:8090/givenMessage",
       "method": "POST",
