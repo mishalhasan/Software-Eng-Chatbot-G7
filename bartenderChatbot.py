@@ -43,21 +43,30 @@ def respond(input_msg, senderId):
         chat_log[senderId]['drinks_served'] = 0
         return "Session cleared"
     times_con = how_many_messages(senderId)
-    if check_for_greeting(input_msg) and times_con == 1:
+    if check_for_greeting(input_msg):
         return random.choice(GREETING_RESPONSES)
     pronoun, noun, adjective, verb = get_speech_parts(input_msg)
     num_drinks = chat_log[senderId]['drinks_served']
     if num_drinks > 3:
         return "You are too drunk I am unable to serve you any more drinks. You can type 'clear' to tell me that you're sober again"
-    if noun:
-        if noun in DRINKS:
-            #increment drink counter
-            chat_log[senderId]['drinks_served'] = num_drinks + 1
-            if num_drinks > 1:
-                return "One {0} coming right up!".format(noun)
-            if num_drinks > 1:
-                return "Heres your {0}! Wow you've already had {1} drinks!".format(noun, num_drinks)
-    return random.choice(HEDGE_RESPONSES)
+    drink = noun
+    if noun not in DRINKS:
+        drink = search_for_drink(input_msg)
+    if len(input_msg.words) == 1:
+        drink = input_msg
+    print(drink)
+    if drink in DRINKS:
+        print ('in the loop')
+        #increment drink counter
+        chat_log[senderId]['drinks_served'] = num_drinks + 1
+        if num_drinks <= 1:
+            return "One {0} coming right up!".format(drink)
+        if num_drinks == 2:
+            return "{0} for you, enjoy.".format(drink)
+        else:
+            return "Here is your {0}! Wow you've already had {1} drinks!".format(drink, num_drinks)
+    else:
+        return random.choice(HEDGE_RESPONSES)
 
 
 def check_for_greeting(sentence):
@@ -65,6 +74,13 @@ def check_for_greeting(sentence):
         if word.lower() in GREETING_KEYWORDS:
             return True
     return False
+
+
+def search_for_drink(sentence):
+    for word in sentence.words:
+        if word.lower() in DRINKS:
+            return word
+    return None
 
 
 def get_speech_parts(input_msg):
