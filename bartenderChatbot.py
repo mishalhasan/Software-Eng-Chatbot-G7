@@ -65,6 +65,9 @@ def respond(input_msg, senderId):
             return "{0} for you, enjoy.".format(drink)
         else:
             return "Here is your {0}! Wow you've already had {1} drinks!".format(drink, num_drinks)
+    if noun:
+        #If we have a noun but no drink, we don't know what they want, so we answer with a question
+        return "Need a {0}?".format(noun)
     else:
         return random.choice(HEDGE_RESPONSES)
 
