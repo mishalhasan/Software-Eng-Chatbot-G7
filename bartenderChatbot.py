@@ -19,7 +19,7 @@ def createMessage(input): #change this method and anything to create the message
 
 def how_many_messages(senderId):
     if senderId not in chat_log:
-        log = {'times_contacted': 1, 'context': 'null'}
+        log = {'times_contacted': 1, 'context': 'null', 'drinks_served': 0}
         chat_log[senderId] = log
         return 1
     else:
