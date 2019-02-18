@@ -64,9 +64,9 @@ def buildMessage(input_msg, senderId):
             return "Here is your {0}! Wow you've already had {1} drinks!".format(drink, num_drinks)
 
     # Look for yes or no responses and respond with a weak hedge
-    if check_for_yes(input_msg):
+    if checkForYes(input_msg):
         return random.choice(YES_RESPONSES)
-    if check_for_no(input_msg):
+    if checkForNo(input_msg):
         return random.choice(NO_RESPONSES)
 
     #If we have a noun but no drink, we don't know what they want, so we answer with a question
@@ -112,6 +112,20 @@ def CheckForGreeting(sentence):
     '''Return boolean if the user sentence contains a greeting'''
     for word in sentence.words:
         if word.lower() in GREETING_KEYWORDS:
+            return True
+    return False
+
+
+def checkForYes(sentence):
+    for word in sentence.words:
+        if word.lower() in YES_KEYWORDS:
+            return True
+    return False
+
+
+def checkForNo(sentence):
+    for word in sentence.words:
+        if word.lower() in NO_KEYWORDS:
             return True
     return False
 
