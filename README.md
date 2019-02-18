@@ -1,5 +1,4 @@
 # Software-Eng-Chatbot
-=============
 ## Prerequisites
 * NodeJS
 * Python 3
