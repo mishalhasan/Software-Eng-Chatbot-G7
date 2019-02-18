@@ -10,6 +10,10 @@ GREETING_KEYWORDS = ("hello", "hi", "greetings", "sup", "what's up", "hi there")
 GREETING_RESPONSES = ["What can I get you?", "Hello stranger, what can I serve up for you?", "Need a drink?", "Hi, hope you're thirsty. What can I get you?"]
 HEDGE_RESPONSES = ["I have no idea what you're asking", "I'm not sure", "Can you re-phrase that?", "Pardon?", "Sorry I can't do that", "I'm confused"]
 DRINKS = ("vodka", "beer", "whiskey", "wine")
+YES_KEYWORDS = ("yes", "yeah", "certainly", "true", "yep", "yea", "okay", "exactly", "gladly")
+YES_RESPONSES = ["Okay", "Sounds good", "I like it", "Thats great!", "Exciting!"]
+NO_KEYWORDS = ("no", "nah", "negative", "not really", "never", "false", "nope")
+NO_RESPONSES = ["That's too bad", "Suit yourself", "If you say so", "I insist"]
 chat_log = {}
 
 
@@ -47,8 +51,6 @@ def respond(input_msg, senderId):
         return random.choice(GREETING_RESPONSES)
     pronoun, noun, adjective, verb = get_speech_parts(input_msg)
     num_drinks = chat_log[senderId]['drinks_served']
-    if num_drinks > 3:
-        return "You are too drunk I am unable to serve you any more drinks. You can type 'clear' to tell me that you're sober again"
     drink = noun
     if noun not in DRINKS:
         drink = search_for_drink(input_msg)
@@ -61,26 +63,33 @@ def respond(input_msg, senderId):
         chat_log[senderId]['drinks_served'] = num_drinks + 1
         if num_drinks <= 1:
             return "One {0} coming right up!".format(drink)
-        elif num_drinks == 2:
+        if num_drinks == 2:
             return "{0} for you, enjoy.".format(drink)
         else:
             return "Here is your {0}! Wow you've already had {1} drinks!".format(drink, num_drinks)
+    if check_for_yes(input_msg):
+        return random.choice(YES_RESPONSES)
+    if check_for_no(input_msg):
+        return random.choice(NO_RESPONSES)
     if noun:
         #If we have a noun but no drink, we don't know what they want, so we answer with a question
         resp = []
-        resp.append("Need")
         if pronoun:
-            if starts_with_vowel(noun):
-                pronoun = "an"
-            else:
-                pronoun = "a"
+            print("pron" + pronoun)
             resp.append(pronoun)
-            if adjective:
-                resp.append(adjective)
-        resp.append(noun + "?")
-        return " ".join(resp) 
-    else:
-        return random.choice(HEDGE_RESPONSES)
+        if verb:
+            v = verb[0]
+            if v is not None:
+                resp.append(v)
+        if starts_with_vowel(noun):
+            noun_pronoun = "an"
+        else:
+            noun_pronoun = "a"
+        resp.append(noun_pronoun + " " + noun + "?")
+        print(resp)
+        return " ".join(resp)
+    #If nothing caught, return a hedge
+    return random.choice(HEDGE_RESPONSES)
 
 
 def check_for_greeting(sentence):
