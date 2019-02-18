@@ -121,6 +121,7 @@ def howManyMessages(senderId):
 
 
 def clearSession(senderId):
+    '''Delete any data from the user session log'''
     chat_log[senderId]['times_contacted'] = 0
     chat_log[senderId]['drinks_served'] = 0
 
@@ -142,6 +143,7 @@ def CheckForGoodbye(sentence):
 
 
 def checkForYes(sentence):
+    '''Return boolean if the user indicated a yes/true reply'''
     for word in sentence.words:
         if word.lower() in YES_KEYWORDS:
             return True
@@ -149,6 +151,7 @@ def checkForYes(sentence):
 
 
 def checkForNo(sentence):
+    '''Return boolean if the user indicated a no/false reply'''
     for word in sentence.words:
         if word.lower() in NO_KEYWORDS:
             return True
