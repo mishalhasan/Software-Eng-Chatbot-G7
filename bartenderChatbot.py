@@ -90,7 +90,7 @@ def buildMessage(input_msg, senderId):
     return random.choice(HEDGE_RESPONSES)
 
 
-def createChatLog(senderId)
+def createChatLog(senderId):
     '''Keeps track of each session ID in a dictionary'''
     log = {'times_contacted': 1, 'context': None, 'drinks_served': 0}
     chat_log[senderId] = log
