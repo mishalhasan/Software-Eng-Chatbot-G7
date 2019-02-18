@@ -8,6 +8,8 @@ import os
 os.environ['NLTK_DATA'] = '~/nltk_data'
 GREETING_KEYWORDS = ("hello", "hi", "greetings", "sup", "what's up", "hi there")
 GREETING_RESPONSES = ["What can I get you?", "Hello stranger, what can I serve up for you?", "Need a drink?", "Hi, hope you're thirsty. What can I get you?"]
+GOODBYE_KEYWORDS = ("bye", "good bye", "goodbye", "see ya")
+GOODBYE_RESPONSES = ["Have a good night", "Drive safe!", "Until next time"]
 HEDGE_RESPONSES = ["I have no idea what you're asking", "I'm not sure", "Can you re-phrase that?", "Pardon?", "Sorry I can't do that", "I'm confused"]
 DRINKS = ("vodka", "beer", "whiskey", "wine")
 YES_KEYWORDS = ("yes", "yeah", "certainly", "true", "yep", "yea", "okay", "exactly", "gladly")
@@ -41,6 +43,10 @@ def buildMessage(input_msg, senderId):
     if CheckForGreeting(input_msg):
         return random.choice(GREETING_RESPONSES)
 
+    # If the user is greeting, respond with a greeting
+    if CheckForGoodbye(input_msg):
+        return random.choice(GOODBYE_RESPONSES)
+
     # Break the message into parts
     pronoun, noun, adjective, verb = getSpeechParts(input_msg)
     num_drinks = chat_log[senderId]['drinks_served']
@@ -68,6 +74,10 @@ def buildMessage(input_msg, senderId):
         return random.choice(YES_RESPONSES)
     if checkForNo(input_msg):
         return random.choice(NO_RESPONSES)
+
+    # If someone doesn't want anything
+    if noun == "nothing":
+        return "There isn't anything I can get for you? I am a master bar tender. You won't find any better."
 
     #If we have a noun but no drink, we don't know what they want, so we answer with a question
     if noun:
@@ -112,6 +122,14 @@ def CheckForGreeting(sentence):
     '''Return boolean if the user sentence contains a greeting'''
     for word in sentence.words:
         if word.lower() in GREETING_KEYWORDS:
+            return True
+    return False
+
+
+def CheckForGoodby(sentence):
+    '''Return boolean if the user wants to leave/end the sesion'''
+    for word in sentence.words:
+        if word.lower() in GOODBYE_KEYWORDS:
             return True
     return False
 
