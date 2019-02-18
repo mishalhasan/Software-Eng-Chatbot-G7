@@ -119,7 +119,7 @@ def howManyMessages(senderId):
         return times_con
 
 
-def clearSession(senderID):
+def clearSession(senderId):
     chat_log[senderId]['times_contacted'] = 0
     chat_log[senderId]['drinks_served'] = 0
 
