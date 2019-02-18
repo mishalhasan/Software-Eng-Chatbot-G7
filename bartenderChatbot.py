@@ -6,12 +6,13 @@ import json
 import os
 
 os.environ['NLTK_DATA'] = '~/nltk_data'
-GREETING_KEYWORDS = ("hello", "hi", "greetings", "sup", "what's up", "hi there")
+GREETING_KEYWORDS = ("hello", "hi", "greetings", "sup", "what's up", "hi there", "good evening", "wuzzup my homie")
 GREETING_RESPONSES = ["What can I get you?", "Hello stranger, what can I serve up for you?", "Need a drink?", "Hi, hope you're thirsty. What can I get you?"]
 GOODBYE_KEYWORDS = ("bye", "good bye", "goodbye", "see ya")
 GOODBYE_RESPONSES = ["Have a good night", "Drive safe!", "Until next time"]
 HEDGE_RESPONSES = ["I have no idea what you're asking", "I'm not sure", "Can you re-phrase that?", "Pardon?", "Sorry I can't do that", "I'm confused"]
-DRINKS = ("vodka", "beer", "whiskey", "wine")
+DRINKS = ("vodka", "beer", "whiskey", "wine", "sex on the beach", "screwdriver", "green fairy", "whiskey", "absinthe", "acapulco gold", "amaretto", "bacardi", "baileys" "budweiser", "champagne", "daiquiri", "goldschlager" "guinness", "grey goose", "hootch", "jack daniels", "jagermeister", "limoncello", "mezcal", "moonshine", "pina colada", "tequila", "vodka", "zinfandel", "raki", "long island iced tea"  )
+DRINKSTYLE = ("on the rocks", "neat")#ask this after they request a drink
 YES_KEYWORDS = ("yes", "yeah", "certainly", "true", "yep", "yea", "okay", "exactly", "gladly")
 YES_RESPONSES = ["Okay", "Sounds good", "I like it", "Thats great!", "Exciting!"]
 NO_KEYWORDS = ("no", "nah", "negative", "not really", "never", "false", "nope")
