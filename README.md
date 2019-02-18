@@ -18,6 +18,10 @@ The bartender chatbot uses facebook as a front-end.  Communication with facebook
 * Node JS
 * Flask chatbot receives message and the reply is taken back up the chain
 
+## Libraries
+* NLTK/TextBlob - Python framework used for natural language processing
+* Flask - Python web framework used to communicate with POST requests
+
 
 # Install Chatbot to own server
 ## Prerequisites
