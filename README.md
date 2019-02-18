@@ -22,6 +22,10 @@ The bartender chatbot uses facebook as a front-end.  Communication with facebook
 * NLTK/TextBlob - Python framework used for natural language processing
 * Flask - Python web framework used to communicate with POST requests
 
+## Gain Permission to Access Chatbot
+As facebook requires for any app on their services to be reviewed, our chatbot app is not accessible to the public. Awaiting facebook to review an app may take a while so for the meantime we need to authorize test users to access the chatbot through messenger. If you wish to test our app please contact raphaelchevallier@hotmail.com and pass your facebook ID or username. Once approved we will send back an invite to that facebook id/username and you will need to direct yourself to https://developers.facebook.com/ and accept the invite to be a tester. Once accepted, travel to https://www.facebook.com/Bartender-Chatbot-310-594256287663533/
+and message the page. The chatbot will respond back to you and will be fully functional to you.
+
 
 # Install Chatbot to own server
 ## Prerequisites
