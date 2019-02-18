@@ -21,30 +21,12 @@ def createMessage(input):
     '''Takes json facebook input and creates the message to return to facebook'''
     input_msg = TextBlob(input['text'])
     senderId = input['sid']
-    data = respond(input_msg, senderId)
+    data = buildMessage(input_msg, senderId) 
     #print(chat_log)
     return str(data)  #this will return the wanted message back out to messenger
 
 
-def create_chat_log(senderId)
-    '''Keeps track of each session ID in a dictionary'''
-    log = {'times_contacted': 1, 'context': None, 'drinks_served': 0}
-    chat_log[senderId] = log
-
-
-def how_many_messages(senderId):
-    '''Check the chat log for number of messages and increment accordinly.'''
-    if senderId not in chat_log:
-        create_chat_log(senderId)
-        #return value is number of messages received
-        return 1
-    else:
-        times_con = chat_log[senderId]['times_contacted'] + 1
-        chat_log[senderId]['times_contacted'] = times_con
-        return times_con
-
-
-def respond(input_msg, senderId):
+def buildMessage(input_msg, senderId):
     '''Core Logic to build the message.
     If unsure how to reply, will respond with a hedge'''
 
@@ -54,19 +36,19 @@ def respond(input_msg, senderId):
         chat_log[senderId]['drinks_served'] = 0
         return "Session cleared"
 
-    times_con = how_many_messages(senderId)
+    times_con = howManyMessages(senderId)
     # If the user is greeting, respond with a greeting
-    if check_for_greeting(input_msg):
+    if CheckForGreeting(input_msg):
         return random.choice(GREETING_RESPONSES)
 
     # Break the message into parts
-    pronoun, noun, adjective, verb = get_speech_parts(input_msg)
+    pronoun, noun, adjective, verb = getSpeechParts(input_msg)
     num_drinks = chat_log[senderId]['drinks_served']
 
     # Search for a drink in the user input and respond as well as we can
     drink = noun
     if noun not in DRINKS:
-        drink = search_for_drink(input_msg)
+        drink = searchForDrink(input_msg)
     if len(input_msg.words) == 1:
         drink = input_msg
     if drink in DRINKS:
@@ -97,7 +79,7 @@ def respond(input_msg, senderId):
             v = verb[0]
             if v is not None:
                 resp.append(v)
-        if starts_with_vowel(noun):
+        if startsWithVowel(noun):
             noun_pronoun = "an"
         else:
             noun_pronoun = "a"
@@ -108,7 +90,25 @@ def respond(input_msg, senderId):
     return random.choice(HEDGE_RESPONSES)
 
 
-def check_for_greeting(sentence):
+def createChatLog(senderId)
+    '''Keeps track of each session ID in a dictionary'''
+    log = {'times_contacted': 1, 'context': None, 'drinks_served': 0}
+    chat_log[senderId] = log
+
+
+def howManyMessages(senderId):
+    '''Check the chat log for number of messages and increment accordinly.'''
+    if senderId not in chat_log:
+        createChatLog(senderId)
+        #return value is number of messages received
+        return 1
+    else:
+        times_con = chat_log[senderId]['times_contacted'] + 1
+        chat_log[senderId]['times_contacted'] = times_con
+        return times_con
+
+
+def CheckForGreeting(sentence):
     '''Return boolean if the user sentence contains a greeting'''
     for word in sentence.words:
         if word.lower() in GREETING_KEYWORDS:
@@ -116,7 +116,7 @@ def check_for_greeting(sentence):
     return False
 
 
-def search_for_drink(sentence):
+def searchForDrink(sentence):
     '''Return boolean if the user sentence contains a drink'''
     for word in sentence.words:
         if word.lower() in DRINKS:
@@ -124,21 +124,21 @@ def search_for_drink(sentence):
     return None
 
 
-def get_speech_parts(input_msg):
+def getSpeechParts(input_msg):
     '''Use natural language processing to find and categorize each part of the sentance'''
     pronoun = None
     noun = None
     adjective = None
     verb = None
     for s in input_msg.sentences:
-        pronoun = find_pronoun(s)
-        noun = find_noun(s)
-        adjective = find_adjective(s)
-        verb = find_verb(s)
+        pronoun = findPronoun(s)
+        noun = findNoun(s)
+        adjective = findAdjective(s)
+        verb = findVerb(s)
     return pronoun, noun, adjective, verb
 
 
-def find_pronoun(sent):
+def findPronoun(sent):
     '''Return pronoun (I or You). Determins if the user is talking about
     themselves or the bot.
     Pronoun is represented as PRP in NLTK'''
@@ -151,7 +151,7 @@ def find_pronoun(sent):
     return pronoun
 
 
-def find_verb(sent):
+def findVerb(sent):
     '''Return verb represended as VB in NLTK'''
     verb = None
     pos = None
@@ -163,7 +163,7 @@ def find_verb(sent):
     return verb, pos
 
 
-def find_noun(sent):
+def findNoun(sent):
     '''Return noun represended as NN in NLTK'''
     noun = None
     if not noun:
@@ -175,7 +175,7 @@ def find_noun(sent):
     return noun
 
 
-def find_adjective(sent):
+def findAdjective(sent):
     '''Return adjective represended as JJ in NLTK'''
     adj = None
     for w, p in sent.pos_tags:
@@ -185,7 +185,7 @@ def find_adjective(sent):
     return adj
 
 
-def starts_with_vowel(word):
+def startsWithVowel(word):
     '''Used to check if a noun starts with a vowel
     then we can assign the proper pronoun'''
     return True if word[0] in 'aeiou' else False
