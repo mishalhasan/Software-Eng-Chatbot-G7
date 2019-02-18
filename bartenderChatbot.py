@@ -34,8 +34,7 @@ def buildMessage(input_msg, senderId):
 
     # Clears the user session to start over new
     if input_msg.lower() == 'clear':
-        chat_log[senderId]['times_contacted'] = 0
-        chat_log[senderId]['drinks_served'] = 0
+        clearSession(senderId)
         return "Session cleared"
 
     times_con = howManyMessages(senderId)
@@ -45,6 +44,8 @@ def buildMessage(input_msg, senderId):
 
     # If the user is greeting, respond with a greeting
     if CheckForGoodbye(input_msg):
+        # They're leaving, so clear the session
+        clearSession(senderId)
         return random.choice(GOODBYE_RESPONSES)
 
     # Break the message into parts
@@ -118,6 +119,11 @@ def howManyMessages(senderId):
         return times_con
 
 
+def clearSession(senderID):
+    chat_log[senderId]['times_contacted'] = 0
+    chat_log[senderId]['drinks_served'] = 0
+
+
 def CheckForGreeting(sentence):
     '''Return boolean if the user sentence contains a greeting'''
     for word in sentence.words:
@@ -126,7 +132,7 @@ def CheckForGreeting(sentence):
     return False
 
 
-def CheckForGoodby(sentence):
+def CheckForGoodbye(sentence):
     '''Return boolean if the user wants to leave/end the sesion'''
     for word in sentence.words:
         if word.lower() in GOODBYE_KEYWORDS:
