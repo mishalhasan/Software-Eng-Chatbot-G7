@@ -1,4 +1,16 @@
 # Software-Eng-Chatbot
+## 310 Assignment 2: CHAT BOT
+## USER GUIDE
+Aaron Mahnic
+Ansa Erturk
+Mishal Hasan
+Raphael Chevallier
+Tyrel Narciso
+
+## Introduction
+For this assignment, we built a chat bot to mimic basic bartending needs. Built with basic functionality that can accept a text entry and respond with a logical statement. Our bot uses pattern matching and recognizes “aggressive” words instead of adapting a more complex contextual recognition approach. The app is accessible through Facebook and can be easily interacted with through the messenger.
+
+# Install Chatbot to own server
 ## Prerequisites
 * NodeJS
 * Python 3
