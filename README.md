@@ -12,12 +12,12 @@ For this assignment, we built a chat bot to mimic basic bartending needs. Built 
 
 ## Infrastructure
 The bartender chatbot uses facebook as a front-end.  Communication with facebook is done through a nodeJS webhook that passes the message data to a python service (flask) which processes the user's message and responds accordingly. In order to readily communicate with facebook, the chatbot is currently installed and running on a dedicated linux server. The flask chatbot bartenderChatbot.py can run as a stand-alone chatbot service and hook into any kind of front end interface with minimal changes. 
-###Chat flow when user messages the bot follows the steps below.
--User messages chatbot on facebook
--Facebook API
--Nginx Forward proxy (for SSL termination) 
--Node JS
--Flask chatbot receives message and the reply is taken back up the chain
+### Chat flow when user messages the bot follows the steps below.
+*User messages chatbot on facebook
+*Facebook API
+*Nginx Forward proxy (for SSL termination) 
+*Node JS
+*Flask chatbot receives message and the reply is taken back up the chain
 
 
 # Install Chatbot to own server
