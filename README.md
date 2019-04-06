@@ -9,7 +9,7 @@ The bartender chatbot uses python as the backend with a combination of other lib
 
 ## Libraries
 
-NLTK/TextBlob - Python framework used for natural language 
+NLTK - Python framework used for natural language 
 
 ## Improvements
 
