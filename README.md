@@ -49,6 +49,18 @@ Initially, the bot was using NLTK but was not fully utilizing the parts of speec
 
 ![WORK History](https://github.com/mishalhasan/Software-Eng-Chatbot-G7/blob/master/Screen%20Shot%202019-04-05%20at%2011.19.20%20PM.png)
 
+## Sample Output 
+
+![Good Output](https://github.com/mishalhasan/Software-Eng-Chatbot-G7/blob/master/Screen%20Shot%202019-04-05%20at%2011.46.07%20PM.png)
+
+This, output shows even if a drunk person would be saying random items, the bot can provide good answers to someone whhos not making much sense. In the beginning it also, showed how hello was miss spelled and yet still responses appropriately. Furethermore, the end of the bot occurs when a synonym or an actual goodbye word is used. In this example, goodbye wasn't used but you woudld have seen the end of the convo. 
+
+Here are two bad examples, when asking for bar food the bot crashes and gives a list of drinks. Here it doesn't know how to respond, but using POS, it is still trying to come up with a somewhat answer. 
+
+
+![Failure](https://github.com/mishalhasan/Software-Eng-Chatbot-G7/blob/master/Screen%20Shot%202019-04-05%20at%2011.54.33%20PM.png)
+
+
 ## Combined features 
 
   1. POS tagging 
