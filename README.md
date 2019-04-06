@@ -20,7 +20,8 @@ Initially, the bot was using NLTK but was not fully utilizing the parts of speec
 
 ## DFD Level 0 
 
-
+![DFD LEVEL 0](https://github.com/mishalhasan/Software-Eng-Chatbot-G7/blob/master/Screen%20Shot%202019-04-05%20at%2010.07.24%20PM.png)
 
 ## DFD Level 1 
 
+![DFD LEVEL 1](https://github.com/mishalhasan/Software-Eng-Chatbot-G7/blob/master/Screen%20Shot%202019-04-05%20at%2010.00.46%20PM.png)
