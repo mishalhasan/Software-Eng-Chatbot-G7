@@ -20,6 +20,7 @@ Although the system’s functionality is efficient as a basic bot, it can be imp
 Initially, the bot was using NLTK but was not fully utilizing the parts of speech. Utilizing this library, the bot is able to actually analyze and label parts of speech. Furthermore, initially, the NLTK was only using basic pos but now have started to specify specialized portion of the speech such as modal,"MD", allowing to answer based off of questioning input. Since, the program was developed using Python, incorporated synonym recognition allowing more flexibility. Now users have more of a range as to what they can an ask. Initially, we had a string list of words that could be used but now the system accepts synonyms of for the categories listed. The program is also more flexible because of spelling. It now accepts slight variation to the original words. 
 
 ![POS tagging example]https://github.com/mishalhasan/Software-Eng-Chatbot-G7/blob/master/Screen%20Shot%202019-04-05%20at%2011.31.31%20PM.png)
+
 ![Spelling and Synonym](https://github.com/mishalhasan/Software-Eng-Chatbot-G7/blob/master/Screen%20Shot%202019-04-05%20at%2011.28.58%20PM.png)
 
 
