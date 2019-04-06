@@ -22,6 +22,26 @@ Initially, the bot was using NLTK but was not fully utilizing the parts of speec
 
 ![DFD LEVEL 0](https://github.com/mishalhasan/Software-Eng-Chatbot-G7/blob/master/Screen%20Shot%202019-04-05%20at%2010.07.24%20PM.png)
 
+1. POS tagging: tags part of speech 
+2. user input: console text input 
+3. screen: displays result of chat 
+4. flexibility/adaptibility: infuses synonym and spellinng that is less restrictive 
+
 ## DFD Level 1 
 
 ![DFD LEVEL 1](https://github.com/mishalhasan/Software-Eng-Chatbot-G7/blob/master/Screen%20Shot%202019-04-05%20at%2010.00.46%20PM.png)
+
+1.Output: places generated output in the console, or GUI
+2. Chatbot: main thread of execution
+3. POS: checks for and if applicable creates a response based on specific points of speech 
+4. Dictionary: if inout matches an entry in the wordnet library, utilize that 
+5. Response: the main worker/ logic unit for generating output based on input from DrunkBot 
+6. User Input: data inputed as text 
+
+## Github Repository 
+
+## Combined features 
+
+  1. POS tagging 
+  2. NLTK library usage 
+  3. 
