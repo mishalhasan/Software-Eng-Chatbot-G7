@@ -13,10 +13,16 @@ NLTK - Python framework used for natural language
 
 ## Improvements
 
-Although the system’s functionality is efficient as a basic bot, it can be improved by adding data outside the context of a bar and by populating the existing categories (eg. drinks). More elaborate methods can be added to detect false positives after an advanced contextual recognition algorithm is implemented. The chatbot is still very restrictive but adding more responses has resulted in more flexibility. Beforehand, the bot was barely able to answer responses and much was hardcoded in. The bot is now able to answer a little more complex responses but is still restrictive. 
+Although the system’s functionality is efficient as a basic bot, it can be improved by adding data outside the context of a bar and by populating the existing categories (eg. drinks). More elaborate methods can be added to detect false positives after an advanced contextual recognition algorithm is implemented. The chatbot is still very restrictive but adding more responses has resulted in more flexibility. Beforehand, the bot was barely able to answer responses and much was hardcoded in. The bot is now able to answer a little more complex responses but is still restrictive. In the follwing screenshots, we can see that using pos, we can have more complex questions and answers. Also, using synonym, we yield positive results without harcoding and finally spelling mistakes are not as fatal to the system anymore. 
+
 
 ## New Features 
 Initially, the bot was using NLTK but was not fully utilizing the parts of speech. Utilizing this library, the bot is able to actually analyze and label parts of speech. Furthermore, initially, the NLTK was only using basic pos but now have started to specify specialized portion of the speech such as modal,"MD", allowing to answer based off of questioning input. Since, the program was developed using Python, incorporated synonym recognition allowing more flexibility. Now users have more of a range as to what they can an ask. Initially, we had a string list of words that could be used but now the system accepts synonyms of for the categories listed. The program is also more flexible because of spelling. It now accepts slight variation to the original words. 
+
+![POS tagging example]https://github.com/mishalhasan/Software-Eng-Chatbot-G7/blob/master/Screen%20Shot%202019-04-05%20at%2011.31.31%20PM.png)
+![Spelling and Synonym](https://github.com/mishalhasan/Software-Eng-Chatbot-G7/blob/master/Screen%20Shot%202019-04-05%20at%2011.28.58%20PM.png)
+
+
 
 ## DFD Level 0 
 
@@ -31,17 +37,21 @@ Initially, the bot was using NLTK but was not fully utilizing the parts of speec
 
 ![DFD LEVEL 1](https://github.com/mishalhasan/Software-Eng-Chatbot-G7/blob/master/Screen%20Shot%202019-04-05%20at%2010.00.46%20PM.png)
 
-  1. Output: places generated output in the console, or GUI
+  1. User Input: data inputed as text 
   2. Chatbot: main thread of execution
   3. POS: checks for and if applicable creates a response based on specific points of speech 
   4. Dictionary: if inout matches an entry in the wordnet library, utilize that 
   5. Response: the main worker/ logic unit for generating output based on input from DrunkBot 
-  6. User Input: data inputed as text 
+  6. Output: places generated output in the console, or GUI
 
 ## Github Repository 
+
+![WORK History](https://github.com/mishalhasan/Software-Eng-Chatbot-G7/blob/master/Screen%20Shot%202019-04-05%20at%2011.19.20%20PM.png)
 
 ## Combined features 
 
   1. POS tagging 
   2. NLTK library usage 
-  3. 
+  3. Response body 
+  4. GUI implementation 
+  5. Classifier 
